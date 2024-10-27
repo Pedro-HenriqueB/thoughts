@@ -1,0 +1,24 @@
+<div class="dashboard">
+  <div class="title-container">
+    <h2>Dashboard</h2>
+    <a href="/thoughts/add" class="btn">New Thought</a>
+  </div>
+  <h3>Your Thoughts</h3>
+  <ul>
+    {{#each thoughts}}
+      <li>
+        <span class="label">{{this.dataValues.title}}</span>
+        <span class="actions">
+          <a href="/thoughts/edit/{{this.dataValues.id}}" class="btn">Edit</a>
+          <form action="/thoughts/remove" method="post">
+            <input type="hidden" name="id" value="{{this.dataValues.id}}">
+            <input type="submit" value="Delete" class="btn">
+          </form>
+        </span>
+        </li>
+    {{/each}}
+  </ul>
+  {{#if emptyThoughts}}
+    <p>Theres no thoughts yet, create a new one <a href="/thoughts/add">right here!</a></p>
+  {{/if}}
+</div>
